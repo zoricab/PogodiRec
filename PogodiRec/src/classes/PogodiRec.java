@@ -16,7 +16,15 @@ public class PogodiRec implements IOperations{
 	protected String trazenaRec;
 	protected ArrayList<String> sveReci;
 	protected boolean terminirajProgram;
+	protected int brBodova;
 	
+	
+	public int getBrBodova() {
+		return brBodova;
+	}
+	public void setBrBodova(int brBodova) {
+		this.brBodova = brBodova;
+	}
 	public String getUnesenaRec() {
 		return unesenaRec;
 	}
@@ -89,6 +97,7 @@ public class PogodiRec implements IOperations{
 		this.unesenaRec = "";
 		this.brTrenutnihGreski = 0;
 		this.stanje = Stanje.sNijePogodjena;
+		this.brBodova = this.brDozGres * 100;
 		
 		}
 	
@@ -106,6 +115,7 @@ public class PogodiRec implements IOperations{
 			
 			this.stanje = Stanje.sNijePogodjena;
 			this.brTrenutnihGreski++;
+			this.brBodova -=100;
 			
 		}
 		if (!pogodjenaRec)
@@ -115,6 +125,7 @@ public class PogodiRec implements IOperations{
 		}
 		
 		if (this.brTrenutnihGreski>=this.brDozGres) this.terminirajProgram = true;
+		if (this.brTrenutnihGreski<5) this.brBodova +=500;
 		
 		
 		return this.stanje;

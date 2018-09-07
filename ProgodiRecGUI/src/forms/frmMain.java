@@ -22,6 +22,7 @@ public class frmMain {
 	protected PogodiRec rec;
 	private JLabel lblBrojSlova;
 	private JLabel lblBrojSlovaVrednost;
+	private JLabel brBodova;
 	
 
 
@@ -33,6 +34,14 @@ public class frmMain {
 		initialize();
 		this.rec = new PogodiRec();
 		this.lblBrojSlovaVrednost.setText(String.valueOf(this.rec.getBrSlova()));
+		
+		JLabel lblBrojBodova = new JLabel("Broj bodova:");
+		lblBrojBodova.setBounds(32, 194, 75, 14);
+		frame.getContentPane().add(lblBrojBodova);
+		
+		brBodova = new JLabel("");
+		brBodova.setBounds(144, 194, 46, 14);
+		frame.getContentPane().add(brBodova);
 	}
 
 	/**
@@ -61,6 +70,7 @@ public class frmMain {
 				
 				brGresaka.setText(String.valueOf(rec.getBrTrenutnihGreski()));
 				stanjePogadjanja.setText(String.valueOf(rec.getStanje()));
+				brBodova.setText(String.valueOf(rec.getBrBodova()));
 				
 				if(rec.is_terminirajProgram()){
 					
